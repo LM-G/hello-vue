@@ -14,7 +14,7 @@ v-app
 </template>
 
 <script lang="ts">
-import Header from '@app/core/components/Header.vue';
+import Header from '@app/core/Header.vue';
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({

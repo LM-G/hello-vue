@@ -9,6 +9,12 @@ module.exports = {
 };
 
 function chainWebpack(config) {
+  // temporary fix for index.pug triggering HMR
+  config.devServer
+    .contentBase(path.join(__dirname, 'src'))
+    .watchContentBase(true)
+    .hot(true);
+
   /* aliases **********************************************************************************************************/
 
   config.resolve.alias.delete('@');
@@ -33,6 +39,13 @@ function chainWebpack(config) {
     .end()
     .use('pug-plain')
     .loader('pug-plain-loader');
+
+  // yml
+  config.module
+    .rule('yaml')
+    .test(/\.ya?ml$/)
+    .use('yml')
+    .loader('yml-loader');
 
   /* plugins **********************************************************************************************************/
 

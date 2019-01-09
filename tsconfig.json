@@ -12,7 +12,7 @@
     "strictFunctionTypes": false,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["webpack-env", "mocha", "chai"],
+    "types": ["webpack", "webpack-env", "mocha", "chai"],
     "paths": {
       "@app/*": ["src/app/*"]
     },

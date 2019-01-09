@@ -1,7 +1,7 @@
 <template lang="pug">
 v-toolbar
   v-toolbar-side-icon
-  v-toolbar-title Hello
+  v-toolbar-title {{ $t("header.title") }}
   v-spacer
   v-toolbar-items
     v-btn(flat) Link One

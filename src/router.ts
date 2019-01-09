@@ -1,6 +1,9 @@
+/**
+ * Vue router configuration
+ */
+
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './app/features/home/Home.vue';
 
 Vue.use(Router);
 
@@ -9,19 +12,29 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
-      component: Home
+      component: () => import('@app/views/home/Home.vue')
     },
     {
       path: '/earth',
       name: 'earth',
-      component: () => import(/* webpackChunkName: "earth" */ './app/features/earth/Earth.vue')
+      component: () => import('@app/views/earth/Earth.vue')
     },
     {
       path: '/mars',
       name: 'mars',
-      component: () => import(/* webpackChunkName: "earth" */ './app/features/mars/Mars.vue')
+      component: () => import('@app/views/mars/Mars.vue')
+    },
+    { path: '*', redirect: '/home' }
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
     }
-  ]
+    if (to.hash) {
+      return { selector: to.hash };
+    }
+    return { x: 0, y: 0 };
+  }
 });
